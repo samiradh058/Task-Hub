@@ -11,9 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="">
+      <body className="grid grid-rows-12 h-screen">
         <Header />
-        <div className="grid grid-cols-12 h-[540px]">
+        <div className="grid grid-cols-12 row-span-10">
           <SideNav />
           {children}
         </div>

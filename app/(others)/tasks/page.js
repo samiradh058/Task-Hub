@@ -1,11 +1,16 @@
+import Link from "next/link";
+
 export default function Tasks() {
   return (
     <div className="grid col-span-9 overflow-y-scroll">
       <div className="p-2">
         <div className="flex justify-end">
-          <button className="bg-green-400 px-2 py-1 rounded-md">
+          <Link
+            href="/tasks/addTask"
+            className="bg-green-400 px-2 py-1 rounded-md"
+          >
             Add new task
-          </button>
+          </Link>
         </div>
         <div>
           <h2 className="mt-2 text-[24px] font-semibold italic text-stone-600">
