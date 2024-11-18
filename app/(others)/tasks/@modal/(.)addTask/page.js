@@ -1,6 +1,13 @@
-import ModalBackDrop from "@/components/modalbackdrop";
+"use client";
 
-export default async function AddTask() {
+import React from "react";
+
+import ModalBackDrop from "@/components/modalbackdrop";
+import { addTask } from "@/actions/addTask";
+
+export default function AddTask() {
+  const [state, formAction] = React.useActionState(addTask, {});
+
   const labelStyle = "grid col-span-3 mt-4";
   const inputStyle =
     "grid col-span-7 rounded-sm px-2 border border-stone-200 focus:border-stone-500 focus:outline-none";
@@ -8,7 +15,10 @@ export default async function AddTask() {
   return (
     <>
       <ModalBackDrop />
-      <form className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 bg-blue-300 p-4 rounded-md">
+      <form
+        action={formAction}
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 bg-blue-300 p-4 rounded-md"
+      >
         <h6 className="flex justify-center font-medium text-[20px]">
           Add new task
         </h6>
@@ -32,6 +42,15 @@ export default async function AddTask() {
             <option>Medium</option>
             <option>High</option>
           </select>
+          <label htmlFor="date" className={labelStyle}>
+            Deadline
+          </label>
+          <input
+            type="date"
+            className={inputStyle}
+            id="deadline"
+            name="deadline"
+          />
           <label htmlFor="description" className={labelStyle}>
             Description:
           </label>
