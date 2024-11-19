@@ -8,7 +8,7 @@ export default function Team() {
         <div className="flex justify-end">
           <Link
             href="/team/addUser"
-            className="bg-green-400 px-2 py-1 rounded-md"
+            className="bg-green-500 hover:bg-green-600 px-2 py-1 rounded-md"
           >
             Add new User
           </Link>

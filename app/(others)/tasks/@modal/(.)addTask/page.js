@@ -4,6 +4,7 @@ import React from "react";
 
 import ModalBackDrop from "@/components/modalbackdrop";
 import { addTask } from "@/actions/addTask";
+import AddButton from "@/components/addButton";
 
 export default function AddTask() {
   const [state, formAction] = React.useActionState(addTask, {});
@@ -63,7 +64,7 @@ export default function AddTask() {
           />
         </div>
         <div className="flex justify-center mt-6">
-          <button className=" bg-green-400 py-1 px-2 rounded-md">Add</button>
+          <AddButton>Add</AddButton>
         </div>
       </form>
     </>

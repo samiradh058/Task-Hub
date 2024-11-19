@@ -4,6 +4,7 @@ import React from "react";
 
 import { addTeam } from "@/actions/addTeam";
 import ModalBackDrop from "@/components/modalbackdrop";
+import AddButton from "@/components/addButton";
 
 export default function AddUser() {
   const [state, formAction] = React.useActionState(addTeam, {});
@@ -52,7 +53,7 @@ export default function AddUser() {
           />
         </div>
         <div className="flex justify-center mt-6">
-          <button className=" bg-green-400 py-1 px-2 rounded-md">Add</button>
+          <AddButton>Add</AddButton>
         </div>
       </form>
     </>

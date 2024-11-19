@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 export default function NavLink({ href, children }) {
   const path = usePathname();
 
-  const LinkStyle = "p-2 font-[500] hover:bg-blue-300 hover:rounded-md";
+  const LinkStyle =
+    "p-1 px-2 font-[500] hover:bg-blue-300 hover:rounded-md mb-1";
 
   let activeClass;
 
