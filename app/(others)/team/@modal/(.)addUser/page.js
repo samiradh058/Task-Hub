@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { addTeam } from "@/actions/addTeam";
+import { addTeam } from "@/actions/newTeam";
 import ModalBackDrop from "@/components/modalbackdrop";
 import AddButton from "@/components/addButton";
 

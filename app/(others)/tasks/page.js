@@ -60,7 +60,7 @@ export default async function Tasks() {
                     <li className={`${listStyleTask} col-span-1`}>
                       {task.deadline}
                     </li>
-                    <ButtonChangeStarted status={task.status} />
+                    <ButtonChangeStarted task={task} />
                   </ul>
                 );
               })}

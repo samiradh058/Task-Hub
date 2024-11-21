@@ -3,11 +3,11 @@
 import React from "react";
 
 import ModalBackDrop from "@/components/modalbackdrop";
-import { addTask } from "@/actions/addTask";
+import { newTask } from "@/actions/newTask";
 import AddButton from "@/components/addButton";
 
 export default function AddTask() {
-  const [state, formAction] = React.useActionState(addTask, {});
+  const [state, formAction] = React.useActionState(newTask, {});
 
   const labelStyle = "grid col-span-3 mt-4";
   const inputStyle =
@@ -31,7 +31,10 @@ export default function AddTask() {
           <label htmlFor="to" className={labelStyle}>
             Assign to:
           </label>
-          <select name="to" id="to" className={inputStyle}>
+          <select name="to" id="to" className={inputStyle} defaultValue="">
+            <option value="" disabled>
+              Select a member
+            </option>
             <option>Ram</option>
             <option>Shyam</option>
           </select>
@@ -63,6 +66,13 @@ export default function AddTask() {
             name="description"
           />
         </div>
+        {state.errors && (
+          <ul className="mt-2 text-red-700">
+            {state.errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
         <div className="flex justify-center mt-6">
           <AddButton>Add</AddButton>
         </div>
