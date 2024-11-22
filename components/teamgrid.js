@@ -7,7 +7,9 @@ export default async function TeamGrid() {
   const liStyle = "bg-green-200 p-1";
   return (
     <div className="flex flex-col p-2">
-      <h2 className="font-bold text-[20px] mb-4">Present team Members:</h2>
+      <h2 className="text-[24px] font-semibold italic text-stone-600">
+        Present team Members:
+      </h2>
       <ul className="grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4 overflow-y-scroll">
         {members.map((member) => {
           return (

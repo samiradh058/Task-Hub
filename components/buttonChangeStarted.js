@@ -1,7 +1,6 @@
 "use client";
 
 import { updateStatus } from "@/lib/apiTasks";
-import { revalidatePath } from "next/cache";
 
 export default function ButtonChangeStarted({ task }) {
   async function changeStarted(e) {
