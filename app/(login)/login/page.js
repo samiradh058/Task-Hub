@@ -1,6 +1,31 @@
-import Link from "next/link";
+"use client";
 
-export default function Login() {
+import { Login } from "@/lib/apiMember";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useFormStatus } from "react-dom";
+
+export default function LoginUser() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { pending } = useFormStatus();
+
+  const router = useRouter();
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    const { data } = await Login({ email, password });
+    console.log(data);
+
+    if (data?.session) {
+      console.log("Session established:", data.session);
+      router.push("/dashboard");
+    } else {
+      console.error("Login failed: No session created.");
+    }
+  }
+
   return (
     <div className="flex justify-center mt-28">
       <form className="p-4 flex flex-col justify-center space-y-12 bg-gradient-to-br from-blue-300 to-blue-400  border rounded-lg shadow-xl border-stone-400">
@@ -9,14 +34,16 @@ export default function Login() {
         </h2>
         <div className="flex flex-col gap-4 text-[20px]">
           <div className="flex gap-4">
-            <label className="text-stone-800" htmlFor="name">
-              Username:
+            <label className="text-stone-800" htmlFor="email">
+              Email:
             </label>
             <input
-              className="px-2 rounded-md focus:bg-stone-100"
+              className="px-2 rounded-md focus:bg-stone-100 ml-10"
               type="text"
-              id="name"
-              name="name"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -29,17 +56,18 @@ export default function Login() {
               type="password"
               id="password"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
         </div>
-        <Link
-          href="./dashboard"
+        <button
+          onClick={handleLogin}
           className="bg-green-500 hover:bg-green-600 px-4 py-2 border-green-600 rounded-lg mx-auto text-[16px]"
-          type="submit"
         >
-          Go to App
-        </Link>
+          {pending ? "Logging in" : "Go to App"}
+        </button>
       </form>
     </div>
   );

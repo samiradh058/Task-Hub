@@ -1,4 +1,5 @@
 import ButtonChangeStarted from "@/components/buttonChangeStarted";
+import { nameFromId } from "@/lib/apiMember";
 import { getCompletedTask, getMyTask, getTasks } from "@/lib/apiTasks";
 import Link from "next/link";
 
@@ -49,7 +50,7 @@ export default async function Tasks() {
                       {task.description}
                     </li>
                     <li className={`${listStyleTask} col-span-2`}>
-                      {task.assigned_by}
+                      {nameFromId(task.assigned_by)}
                     </li>
                     <li className={`${listStyleTask} col-span-1`}>
                       {task.priority}
@@ -94,7 +95,7 @@ export default async function Tasks() {
                       {task.assigned_by}
                     </li>
                     <li className={`${listStyleTask} col-span-2`}>
-                      {task.assign_to}
+                      {nameFromId(task.assign_to)}
                     </li>
                     <li className={`${listStyleTask} col-span-1`}>
                       {task.priority}
@@ -134,10 +135,10 @@ export default async function Tasks() {
                       {task.description}
                     </li>
                     <li className={`${listStyleTask} col-span-2`}>
-                      {task.assign_to}
+                      {nameFromId(task.assign_to)}
                     </li>
                     <li className={`${listStyleTask} col-span-2`}>
-                      {task.assigned_by}
+                      {nameFromId(task.assigned_by)}
                     </li>
                     <li className={`${listStyleTask} col-span-2`}>
                       {task.created_at}

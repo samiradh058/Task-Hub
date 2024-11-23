@@ -1,4 +1,5 @@
 import { getMembers } from "@/lib/apiMember";
+import Image from "next/image";
 
 export default async function TeamGrid() {
   const { members, error } = await getMembers();
@@ -14,7 +15,9 @@ export default async function TeamGrid() {
         {members.map((member) => {
           return (
             <li className={liStyle} key={member.id}>
-              <img src="bg.jpg" alt="Image of person" className="w-full h-40" />
+              <div className="relative w-full h-40">
+                <Image src="/bg.jpg" alt="Image of person" fill />
+              </div>
               <h2 className="mt-2 font-semibold text-[18px]">{member.name}</h2>
               <p>{member.description}</p>
             </li>

@@ -1,5 +1,6 @@
 "use server";
 
+import { idFromName } from "@/lib/apiMember";
 import { addNewTask } from "@/lib/apiTasks";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -37,7 +38,10 @@ export async function newTask(prevState, formData) {
     return { errors };
   }
 
-  await addNewTask(name, assignTo, priority, deadline, description);
+  const idToAssign = await idFromName(assignTo);
+  console.log("id", idToAssign);
+
+  await addNewTask(name, idToAssign, priority, deadline, description);
 
   revalidatePath("/tasks");
   redirect("/dashboard");
